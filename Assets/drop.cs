@@ -17,17 +17,18 @@ public class drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
         if (pointerEventData.pointerDrag == null) return;
         Image droppedImage = pointerEventData.pointerDrag.GetComponent<Image>();
 
-        Debug.Log(iconImage.sprite.name);
         string filename = craftedIfMatchingPair(droppedImage, iconImage);
 
-        iconImage.sprite = droppedImage.sprite;
+        //iconImage.sprite = droppedImage.sprite;
+        iconImage.sprite = Resources.Load<Sprite>("jewelry");
         iconImage.color = Vector4.one * 0.6f;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         if (pointerEventData.pointerDrag == null) return;
-        iconImage.sprite = nowSprite;
+        //iconImage.sprite = nowSprite;
+        iconImage.sprite = Resources.Load<Sprite>("jewelry");
         if (nowSprite == null)
             iconImage.color = Vector4.zero;
         else
@@ -36,7 +37,8 @@ public class drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
     public void OnDrop(PointerEventData pointerEventData)
     {
         Image droppedImage = pointerEventData.pointerDrag.GetComponent<Image>();
-        iconImage.sprite = droppedImage.sprite;
+        //iconImage.sprite = droppedImage.sprite;
+        iconImage.sprite = Resources.Load<Sprite>("jewelry");
         nowSprite = droppedImage.sprite;
         iconImage.color = Vector4.one;
     }
