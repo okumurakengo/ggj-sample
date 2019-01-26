@@ -18,6 +18,7 @@ public class drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
         Image droppedImage = pointerEventData.pointerDrag.GetComponent<Image>();
 
         Debug.Log(iconImage.sprite.name);
+        string filename = craftedIfMatchingPair(droppedImage, iconImage);
 
         iconImage.sprite = droppedImage.sprite;
         iconImage.color = Vector4.one * 0.6f;
@@ -40,7 +41,7 @@ public class drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
         iconImage.color = Vector4.one;
     }
 
-    private string CraftedIfMatchingPair(Image tmpDroppedImage, Image tmpIconImage)
+    private string craftedIfMatchingPair(Image tmpDroppedImage, Image tmpIconImage)
     {
         string filename;
         // ここで画像判定
