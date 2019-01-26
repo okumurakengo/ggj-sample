@@ -16,6 +16,9 @@ public class drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
     {
         if (pointerEventData.pointerDrag == null) return;
         Image droppedImage = pointerEventData.pointerDrag.GetComponent<Image>();
+
+        Debug.Log(iconImage.sprite.name);
+
         iconImage.sprite = droppedImage.sprite;
         iconImage.color = Vector4.one * 0.6f;
     }
@@ -35,5 +38,17 @@ public class drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
         iconImage.sprite = droppedImage.sprite;
         nowSprite = droppedImage.sprite;
         iconImage.color = Vector4.one;
+    }
+
+    private string CraftedIfMatchingPair(Image tmpDroppedImage, Image tmpIconImage)
+    {
+        string filename;
+        // ここで画像判定
+        if (iconImage.sprite.name == "hoge" && tmpIconImage.sprite.name == "fuga") {
+            filename = "new image";
+        } else {
+            filename = "none";
+        }
+        return filename;
     }
 }
